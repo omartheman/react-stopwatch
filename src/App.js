@@ -49,8 +49,8 @@ function App() {
 
       // Check if alarm is on that time 
       if (
-        true
-        // currentTimeMinutes === getMinutesNine()
+        // true
+        currentTimeMinutes === getMinutesNine()
       ){
         console.log('alarm go');
         const audio = new Audio(sound);
