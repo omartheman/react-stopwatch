@@ -11,6 +11,8 @@ function App() {
   
   const getMinutesNine = () => {
     const minutes = (new Date()).getMinutes();
+    
+    // Set the minutes time for the alarm clock. 
     const minutesNine = Math.floor(minutes/10) * 10 + 9;
     return minutesNine;
   }
@@ -40,6 +42,8 @@ function App() {
       setCurrentTimeMinutes( alarmGetMinutes() );
       setCurrentTimeSeconds( alarmGetSeconds() );
 
+      console.log('getMinutesNine()', getMinutesNine())
+
       // Check if alarm is on that time 
       if (
         // true
@@ -58,7 +62,7 @@ function App() {
       console.log('this will run every second');
     }, 1000); 
     return () => clearInterval(interval); 
-  }, []);
+  }, [buttonClicked, currentTimeMinutes]);
 
   return (
     <div className="App">
