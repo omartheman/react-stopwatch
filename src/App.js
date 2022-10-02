@@ -4,6 +4,8 @@ import React, { useEffect, useState } from 'react';
 
 function App() {
 
+  const fontSize = '1.4rem';
+
   const alarmGetMinutes = () => (new Date()).getMinutes();
   const alarmGetSeconds = () => (new Date()).getSeconds();
   
@@ -40,13 +42,16 @@ function App() {
 
       // Check if alarm is on that time 
       if (
-        currentTimeMinutes === 22
+        // true
+        currentTimeMinutes === getMinutesNine()
       ){
         console.log('alarm go');
         const audio = new Audio('http://tastyspleen.net/~quake2/baseq2/sound/world/klax_11.wav');
         clearInterval(interval);
-        audio.play();
+        setInterval( () => {audio.play()}, 3000);
       }
+
+      console.log('current time minutes', currentTimeMinutes)
 
       console.log("button clicked?: ", buttonClicked)
 
@@ -65,17 +70,26 @@ function App() {
               setButtonClicked(true); 
               console.log("button clicked?: ", buttonClicked)
             }}
+            style={{
+              fontSize
+            }}
           >
             Set alarm for {currentTimeHours}:{getMinutesNine()}
           </button>
         }
         { buttonClicked &&
           <>
-            <div>
-              Alarm set for: 
-            </div>
-            <div>
-              {currentTimeHours}:{getMinutesNine()}
+            <div
+              style={{
+                fontSize
+              }}
+            >
+              <div>
+                Alarm set for: 
+              </div>
+              <div>
+                {currentTimeHours}:{getMinutesNine()}
+              </div>
             </div>
           </>
         }
