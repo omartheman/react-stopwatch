@@ -6,6 +6,7 @@ function App() {
 
   const [time, setTime] = useState(0);
   const [currentTime, setCurrentTime] = useState(Date().toLocaleString());
+  const [currentTimeMinutes, setCurrentTimeMinutes] = useState((new Date()).getMinutes());
   const [title, setTitle] = useState('blank');
   const [seconds, setSeconds] = useState(0);
   
@@ -28,8 +29,16 @@ function App() {
           {currentTime}
         </p>
         <p>
-          {seconds}
+          {currentTimeMinutes}
         </p>
+        <button>
+          <div>
+            Set alarm for: 
+          </div>
+          <div>
+            6:09pm
+          </div>
+        </button>
       </header>
     </div>
   );
