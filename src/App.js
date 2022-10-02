@@ -1,6 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
 import React, { useEffect, useState } from 'react'; 
+import sound from './assets/klax_11.wav';
+
 
 function App() {
 
@@ -47,13 +49,13 @@ function App() {
 
       // Check if alarm is on that time 
       if (
-        // true
-        currentTimeMinutes === getMinutesNine()
+        true
+        // currentTimeMinutes === getMinutesNine()
       ){
         console.log('alarm go');
-        const audio = new Audio('http://tastyspleen.net/~quake2/baseq2/sound/world/klax_11.wav');
+        const audio = new Audio(sound);
         clearInterval(interval);
-        setInterval( () => {audio.play()}, 3000);
+        setInterval( () => {audio.play()}, 7000);
       }
 
       console.log('current time minutes', currentTimeMinutes)
