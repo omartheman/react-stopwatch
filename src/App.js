@@ -27,6 +27,9 @@ function App() {
   const [title, setTitle] = useState('blank');
   const [seconds, setSeconds] = useState(0);
   
+
+  const [buttonClicked, setButtonClicked] = useState(false); 
+
   console.log("yes")
   useEffect(() => {
     const interval = setInterval(() => {
@@ -37,13 +40,15 @@ function App() {
 
       // Check if alarm is on that time 
       if (
-        currentTimeMinutes === 21
+        currentTimeMinutes === 22
       ){
         console.log('alarm go');
         const audio = new Audio('http://tastyspleen.net/~quake2/baseq2/sound/world/klax_11.wav');
         clearInterval(interval);
         audio.play();
       }
+
+      console.log("button clicked?: ", buttonClicked)
 
       console.log('this will run every second');
     }, 1000); 
@@ -54,41 +59,26 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          {currentTime}
-        </p>
-        <p>
-          Current hours: 
-        </p>
-        <p>
-          {currentTimeHours}
-        </p>
-        <p>
-          Current minutes: 
-        </p>
-        <p>
-          {currentTimeMinutes}
-        </p>
-        <p>
-          Current seconds:
-        </p>
-        <p>
-          {currentTimeSeconds}
-        </p>
-        <p>
-          Minutes Nine: 
-        </p>
-        <p>
-          {getMinutesNine()}
-        </p>
-        <button>
-          <div>
-            Set alarm for: 
-          </div>
-          <div>
-            {currentTimeHours}:{getMinutesNine()}
-          </div>
-        </button>
+        { ! buttonClicked && 
+          <button
+            onClick={() => {
+              setButtonClicked(true); 
+              console.log("button clicked?: ", buttonClicked)
+            }}
+          >
+            Set alarm for {currentTimeHours}:{getMinutesNine()}
+          </button>
+        }
+        { buttonClicked &&
+          <>
+            <div>
+              Alarm set for: 
+            </div>
+            <div>
+              {currentTimeHours}:{getMinutesNine()}
+            </div>
+          </>
+        }
       </header>
     </div>
   );
