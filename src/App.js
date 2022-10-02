@@ -37,12 +37,13 @@ function App() {
 
       // Check if alarm is on that time 
       if (
-        currentTimeMinutes === getMinutesNine()
-        ){
+        currentTimeMinutes === 21
+      ){
         console.log('alarm go');
+        const audio = new Audio('http://tastyspleen.net/~quake2/baseq2/sound/world/klax_11.wav');
+        clearInterval(interval);
+        audio.play();
       }
-      const audio = new Audio('http://tastyspleen.net/~quake2/baseq2/sound/world/klax_11.wav');
-      audio.play();
 
       console.log('this will run every second');
     }, 1000); 
