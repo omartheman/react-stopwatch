@@ -4,9 +4,18 @@ import React, { useEffect, useState } from 'react';
 
 function App() {
 
+  const alarmGetMinutes = () => (new Date()).getMinutes();
+  const alarmGetSeconds = () => (new Date()).getSeconds();
+
   const [time, setTime] = useState(0);
+  
   const [currentTime, setCurrentTime] = useState(Date().toLocaleString());
-  const [currentTimeMinutes, setCurrentTimeMinutes] = useState((new Date()).getMinutes());
+  
+  const [currentTimeMinutes, setCurrentTimeMinutes] = useState( alarmGetMinutes() );
+
+  const [currentTimeHours, setCurrentTimeHours] = useState((new Date()).getHours());
+  const [currentTimeSeconds, setCurrentTimeSeconds] = useState(alarmGetSeconds());
+
   const [title, setTitle] = useState('blank');
   const [seconds, setSeconds] = useState(0);
   
@@ -15,6 +24,8 @@ function App() {
     const interval = setInterval(() => {
       setSeconds(seconds => seconds + 1);
       setCurrentTime(Date().toLocaleString());
+      setCurrentTimeMinutes( alarmGetMinutes() );
+      setCurrentTimeSeconds( alarmGetSeconds() );
 
       console.log('this will run every second');
     }, 1000); 
@@ -29,7 +40,22 @@ function App() {
           {currentTime}
         </p>
         <p>
+          Current hours: 
+        </p>
+        <p>
+          {currentTimeHours}
+        </p>
+        <p>
+          Current minutes: 
+        </p>
+        <p>
           {currentTimeMinutes}
+        </p>
+        <p>
+          Current seconds:
+        </p>
+        <p>
+          {currentTimeSeconds}
         </p>
         <button>
           <div>
