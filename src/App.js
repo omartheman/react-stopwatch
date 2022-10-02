@@ -11,7 +11,7 @@ function App() {
   
   const getMinutesNine = () => {
     const minutes = (new Date()).getMinutes();
-    
+
     // Set the minutes time for the alarm clock. 
     const minutesNine = Math.floor(minutes/10) * 10 + 9;
     return minutesNine;
@@ -36,6 +36,7 @@ function App() {
 
   console.log("yes")
   useEffect(() => {
+    document.title = 'Alarm Clock';
     const interval = setInterval(() => {
       setSeconds(seconds => seconds + 1);
       setCurrentTime(Date().toLocaleString());
