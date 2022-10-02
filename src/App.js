@@ -37,13 +37,12 @@ function App() {
 
       // Check if alarm is on that time 
       if (
-        currentTimeHours === 18
-        && 
-        currentTimeMinutes === 55
-        
+        currentTimeMinutes === getMinutesNine()
         ){
         console.log('alarm go');
       }
+      const audio = new Audio('http://tastyspleen.net/~quake2/baseq2/sound/world/klax_11.wav');
+      audio.play();
 
       console.log('this will run every second');
     }, 1000); 
