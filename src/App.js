@@ -41,6 +41,13 @@ function App() {
   const [buttonClicked, setButtonClicked] = useState(false); 
 
   console.log("yes")
+
+  const audio = new Audio(sound);
+  audio.addEventListener('ended', function () {
+    audio.currentTime = 0;
+    audio.play();
+  }, false);
+
   useEffect(() => {
     document.title = 'Alarm Clock';
     const interval = setInterval(() => {
@@ -53,13 +60,13 @@ function App() {
 
       // Check if alarm is on that time 
       if (
-        // true
-        currentTimeMinutes === getMinutesNine()
+        true && buttonClicked
+        // currentTimeMinutes === getMinutesNine()
       ){
         console.log('alarm go');
-        const audio = new Audio(sound);
         clearInterval(interval);
-        setInterval( () => {audio.play()}, 7000);
+          console.log('Playing alarm.')
+          audio.play()
       }
 
       console.log('current time minutes', currentTimeMinutes)
