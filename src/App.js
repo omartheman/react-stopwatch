@@ -23,32 +23,16 @@ function App() {
   const displayMinutesNine = () => {
     return getMinutesNine() === 9 ? '09' : getMinutesNine();
   }
-
-  const [time, setTime] = useState(0);
-  
-  const [currentTime, setCurrentTime] = useState(Date().toLocaleString());
   
   const [currentTimeMinutes, setCurrentTimeMinutes] = useState( alarmGetMinutes() );
-  const [currentTimeMinutesNine, setCurrentTimeMinutesNine] = useState( alarmGetMinutes() );
-
   const [currentTimeHours, setCurrentTimeHours] = useState((new Date()).getHours());
-  const [currentTimeSeconds, setCurrentTimeSeconds] = useState(alarmGetSeconds());
-
-  const [title, setTitle] = useState('blank');
-  const [seconds, setSeconds] = useState(0);
-  
-
   const [buttonClicked, setButtonClicked] = useState(false); 
 
   console.log("yes")
   useEffect(() => {
     document.title = 'Alarm Clock';
     const interval = setInterval(() => {
-      setSeconds(seconds => seconds + 1);
-      setCurrentTime(Date().toLocaleString());
       setCurrentTimeMinutes( alarmGetMinutes() );
-      setCurrentTimeSeconds( alarmGetSeconds() );
-
       console.log('getMinutesNine()', getMinutesNine())
 
       // Check if alarm is on that time 
@@ -56,17 +40,13 @@ function App() {
         // true
         currentTimeMinutes === getMinutesNine()
       ){
-        console.log('alarm go');
+        console.log('Alarm activated.');
         const audio = new Audio(sound);
         clearInterval(interval);
         setInterval( () => {audio.play()}, 7000);
       }
-
       console.log('current time minutes', currentTimeMinutes)
 
-      console.log("button clicked?: ", buttonClicked)
-
-      console.log('this will run every second');
     }, 1000); 
     return () => clearInterval(interval); 
   }, [buttonClicked, currentTimeMinutes]);
@@ -81,7 +61,6 @@ function App() {
           <button
             onClick={() => {
               setButtonClicked(true); 
-              console.log("button clicked?: ", buttonClicked)
             }}
             style={{
               fontSize
