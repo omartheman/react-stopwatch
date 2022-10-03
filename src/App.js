@@ -71,10 +71,12 @@ function App() {
     return () => clearInterval(interval); 
   }, [buttonClicked, currentTimeMinutes]);
 
+  const maxSize = '200px'; 
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <img src={logo} className="App-logo" alt="logo" style={{maxWidth: maxSize, maxHeight: maxSize}}/>
         { ! buttonClicked && 
           <button
             onClick={() => {
