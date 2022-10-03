@@ -67,8 +67,8 @@ function App() {
   
         // Check if alarm is on that time 
         if (
-          // currentTimeMinutes === getMinutesNine()
-          currentTimeMinutes === 17
+          currentTimeMinutes === getMinutesNine()
+          // currentTimeMinutes === 17
           // true 
           && buttonClicked
         ){
