@@ -19,6 +19,10 @@ function App() {
     return minutesNine;
   }
 
+  // Display minutes nine. Show '09' instead of '9' if it's single integer. 
+  const displayMinutesNine = () => {
+    return getMinutesNine() === 9 ? '09' : getMinutesNine();
+  }
 
   const [time, setTime] = useState(0);
   
@@ -81,7 +85,7 @@ function App() {
               fontSize
             }}
           >
-            Set alarm for {currentTimeHours}:{getMinutesNine()}
+            Set alarm for {currentTimeHours}:{displayMinutesNine()}
           </button>
         }
         { buttonClicked &&
@@ -95,7 +99,7 @@ function App() {
                 Alarm set for: 
               </div>
               <div>
-                {currentTimeHours}:{getMinutesNine()}
+                {currentTimeHours}:{displayMinutesNine()}
               </div>
             </div>
           </>
