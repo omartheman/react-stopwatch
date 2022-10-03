@@ -37,12 +37,17 @@ function App() {
   const [title, setTitle] = useState('blank');
   const [seconds, setSeconds] = useState(0);
   
+  const [isRunning, setIsRunning] = useState(true); 
 
   const [buttonClicked, setButtonClicked] = useState(false); 
 
   console.log("yes")
+  console.log("isRunning: ", isRunning)
+
 
   const audio = new Audio(sound);
+
+  // Play sound again once it has ended.
   audio.addEventListener('ended', function () {
     audio.currentTime = 0;
     audio.play();
@@ -50,33 +55,41 @@ function App() {
 
   useEffect(() => {
     document.title = 'Alarm Clock';
-    const interval = setInterval(() => {
-      setSeconds(seconds => seconds + 1);
-      setCurrentTime(Date().toLocaleString());
-      setCurrentTimeMinutes( alarmGetMinutes() );
-      setCurrentTimeSeconds( alarmGetSeconds() );
+    if (isRunning){
 
-      console.log('getMinutesNine()', getMinutesNine())
-
-      // Check if alarm is on that time 
-      if (
-        true && buttonClicked
-        // currentTimeMinutes === getMinutesNine()
-      ){
-        console.log('alarm go');
-        clearInterval(interval);
+      const interval = setInterval(() => {
+        setSeconds(seconds => seconds + 1);
+        setCurrentTime(Date().toLocaleString());
+        setCurrentTimeMinutes( alarmGetMinutes() );
+        setCurrentTimeSeconds( alarmGetSeconds() );
+  
+        console.log('getMinutesNine()', getMinutesNine())
+  
+        // Check if alarm is on that time 
+        if (
+          // currentTimeMinutes === getMinutesNine()
+          currentTimeMinutes === 17
+          // true 
+          && buttonClicked
+        ){
+          console.log('alarm go');
           console.log('Playing alarm.')
           audio.play()
-      }
+          setIsRunning(false); 
+        }
+  
 
-      console.log('current time minutes', currentTimeMinutes)
 
-      console.log("button clicked?: ", buttonClicked)
+        console.log('current time minutes', currentTimeMinutes)
+  
+        console.log("button clicked?: ", buttonClicked)
+  
+        console.log('this will run every second');
+      }, 1000); 
 
-      console.log('this will run every second');
-    }, 1000); 
-    return () => clearInterval(interval); 
-  }, [buttonClicked, currentTimeMinutes]);
+      return () => clearInterval(interval); 
+    }
+  }, [buttonClicked, currentTimeMinutes, audio, isRunning]);
 
   const maxSize = '200px'; 
 
