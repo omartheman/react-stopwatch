@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import React, { useEffect, useState } from 'react'; 
-import sound from './assets/klax_11.wav';
+import sound from './assets/alarm-beep-beep.mp3';
 
 
 function App() {
@@ -67,9 +67,9 @@ function App() {
   
         // Check if alarm is on that time 
         if (
-          currentTimeMinutes === getMinutesNine()
           // currentTimeMinutes === 17
           // true 
+          currentTimeMinutes === getMinutesNine()
           && buttonClicked
         ){
           console.log('alarm go');
@@ -77,8 +77,6 @@ function App() {
           audio.play()
           setIsRunning(false); 
         }
-  
-
 
         console.log('current time minutes', currentTimeMinutes)
   
