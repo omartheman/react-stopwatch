@@ -64,12 +64,14 @@ function App() {
         setCurrentTimeSeconds( alarmGetSeconds() );
   
         console.log('getMinutesNine()', getMinutesNine())
+        console.log('seconds: ', seconds)
   
         // Check if alarm is on that time 
         if (
           // currentTimeMinutes === 17
           // true 
-          currentTimeMinutes === getMinutesNine()
+          seconds > 5
+          // currentTimeMinutes === getMinutesNine()
           && buttonClicked
         ){
           console.log('alarm go');
