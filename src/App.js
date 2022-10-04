@@ -46,10 +46,13 @@ function App() {
 
 
   const audio = new Audio(sound);
+  
+  
 
   // Play sound again once it has ended.
   audio.addEventListener('ended', function () {
     audio.currentTime = 0;
+    audio.autoplay = true; 
     audio.play();
   }, false);
 
@@ -74,6 +77,8 @@ function App() {
           // currentTimeMinutes === getMinutesNine()
           && buttonClicked
         ){
+          audio.autoplay = true; 
+          console.log('audio autoplay', audio.autoplay)
           console.log('alarm go');
           console.log('Playing alarm.')
           audio.play()
