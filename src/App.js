@@ -102,6 +102,9 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <div>
+          Alarm for the 9th minute of the current 10-minute time block.
+        </div>
         <img src={logo} className="App-logo" alt="logo" style={{maxWidth: maxSize, maxHeight: maxSize}}/>
         { ! buttonClicked && 
           <button
@@ -110,7 +113,11 @@ function App() {
               console.log("button clicked?: ", buttonClicked)
             }}
             style={{
-              fontSize
+              fontSize,
+              borderRadius: '1000px',
+              border: 'none', 
+              padding: '5px 15px',
+              cursor: 'pointer',
             }}
           >
             Set alarm for {currentTimeHours}:{displayMinutesNine()}
