@@ -73,10 +73,10 @@ function App() {
   
         // Check if alarm is on that time 
         if (
-          currentTimeMinutes === 52
+          // currentTimeMinutes === 52
           // true 
           // seconds > 5
-          // currentTimeMinutes === getMinutesNine()
+          currentTimeMinutes === getMinutesNine()
           && buttonClicked
         ){
           console.log('audio autoplay', audio.autoplay)
