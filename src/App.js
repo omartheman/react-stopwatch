@@ -47,13 +47,15 @@ function App() {
 
   const audio = new Audio(sound);
   
-  
+  function playAlarmAndAddAutoplay(){
+    audio.autoplay = true; 
+    audio.play();
+  }
 
   // Play sound again once it has ended.
   audio.addEventListener('ended', function () {
     audio.currentTime = 0;
-    audio.autoplay = true; 
-    audio.play();
+    playAlarmAndAddAutoplay();
   }, false);
 
   useEffect(() => {
@@ -71,17 +73,16 @@ function App() {
   
         // Check if alarm is on that time 
         if (
-          // currentTimeMinutes === 17
+          currentTimeMinutes === 54
           // true 
-          seconds > 5
+          // seconds > 5
           // currentTimeMinutes === getMinutesNine()
           && buttonClicked
         ){
-          audio.autoplay = true; 
           console.log('audio autoplay', audio.autoplay)
           console.log('alarm go');
           console.log('Playing alarm.')
-          audio.play()
+          playAlarmAndAddAutoplay();
           setIsRunning(false); 
         }
 
